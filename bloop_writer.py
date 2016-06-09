@@ -16,9 +16,12 @@ cursor = db.cursor()
 
 met_temp = data['SiteRep']['DV']['Location']['Period'][0]['Rep'][0]['T']
 met_code = data['SiteRep']['DV']['Location']['Period'][0]['Rep'][0]['W']
+met_hydro = data['SiteRep']['DV']['Location']['Period'][0]['Rep'][0]['H']
+
+print (met_temp,' ',met_code, ' ',met_hydro)
 
 try:
-    cursor.execute("""INSERT INTO edwin VALUES (%s,%s,%s,%s,%s)""",(epoch,'0','0',met_temp,met_code))
+    cursor.execute("INSERT INTO edwin(epoc,e_temp,e_hydro,m_temp,m_code,m_hydro) VALUES(%s, %s, %s, %s, %s, %s)", (epoch, '0','0',met_temp,met_code,met_hydro))
     db.commit()
 except:     
     db.rollback()
