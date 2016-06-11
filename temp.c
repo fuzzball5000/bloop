@@ -67,13 +67,12 @@ void read_dht11_dat()
 	if ( (j >= 40) &&
 	     (dht11_dat[4] == ( (dht11_dat[0] + dht11_dat[1] + dht11_dat[2] + dht11_dat[3]) & 0xFF) ) )
 	{
-		f = dht11_dat[2] * 9. / 5. + 32;
 
    		FILE *fp;
    		fp = fopen("./output.json", "w+");
 		fp = fopen("/tmp/test.txt", "a");
 		fprintf(fp,"{\"humid\":%d.%d,\"temp\":%d.%d}\n",
-        	dht11_dat[0], dht11_dat[1],dht11_dat[2], dht11_dat[3], f);
+        	dht11_dat[0], dht11_dat[1],dht11_dat[2], dht11_dat[3]);
 
 		close(fp);
 			
