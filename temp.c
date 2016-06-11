@@ -69,9 +69,9 @@ void read_dht11_dat()
 	{
 
    		FILE *fp;
-   		fp = fopen("output.json", "a");
+   		fp = fopen("output.json", "w+");
    		fprintf(fp, "{\"%s\":%d.%d,\"%s\":%d.%d}\n",
-   			"temp",dht11_dat[0],dht11_dat[1],"humid",dht11_dat[2], dht11_dat[3]);
+   			"humid",dht11_dat[0],dht11_dat[1],"temp",dht11_dat[2], dht11_dat[3]);
    		fclose(fp);	
 	}
 	else  {
