@@ -18,7 +18,6 @@ void read_dht11_dat()
 	uint8_t laststate	= HIGH;
 	uint8_t counter		= 0;
 	uint8_t j		= 0, i;
-	float	f; /* fahrenheit */
 
 	dht11_dat[0] = dht11_dat[1] = dht11_dat[2] = dht11_dat[3] = dht11_dat[4] = 0;
 
@@ -63,9 +62,7 @@ void read_dht11_dat()
 
 	/*
 	 * check we read 40 bits (8bit x 5 ) + verify checksum in the last byte
-	 * print it out if data is good
 	 */
-
 
 	if ( (j >= 40) &&
 	     (dht11_dat[4] == ( (dht11_dat[0] + dht11_dat[1] + dht11_dat[2] + dht11_dat[3]) & 0xFF) ) )
@@ -74,12 +71,14 @@ void read_dht11_dat()
 
    		FILE *fp;
    		fp = fopen("./output.json", "w+");
-fp = fopen("/tmp/test.txt", "a");
-   		fprintf(fp, "{%c%d%c:%d.%d,%c%d%c:%d.%d}\n",
-   			'"',"temp",'"',dht11_dat[0], dht11_dat[1],'"',"humid",'"',dht11_dat[2], dht11_dat[3], f);
-fclose(fp);
+		fp = fopen("/tmp/test.txt", "a");
+		fprintf(fp,"{\"humid\":%d.%d,\"temp\":%d.%d}\n",
+        	dht11_dat[0], dht11_dat[1],dht11_dat[2], dht11_dat[3], f);
+
+		close(fp);
 			
-	}else  {
+	}
+	else  {
 		printf( "Data not good, skip\n" );
 	}
 }
