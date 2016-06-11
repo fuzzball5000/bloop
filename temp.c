@@ -73,10 +73,11 @@ void read_dht11_dat()
 		f = dht11_dat[2] * 9. / 5. + 32;
 
    		FILE *fp;
-   		fp = fopen("./output", "a");
-   		fprintf(fp, """{humid"":%d.%d"",""""temp"":%d.%d""}""\n""",
-   			dht11_dat[0], dht11_dat[1], dht11_dat[2], dht11_dat[3], f);
-   		fclose(fp);
+   		fp = fopen("./output.json", "w+");
+fp = fopen("/tmp/test.txt", "a");
+   		fprintf(fp, "{%c%d%c:%d.%d,%c%d%c:%d.%d}\n",
+   			'"',"temp",'"',dht11_dat[0], dht11_dat[1],'"',"humid",'"',dht11_dat[2], dht11_dat[3], f);
+fclose(fp);
 			
 	}else  {
 		printf( "Data not good, skip\n" );
