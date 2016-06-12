@@ -3,6 +3,7 @@ import os
 import MySQLdb
 import time
 from time import strftime
+import sys
 
 db_pass = os.environ['sql_pass']
 key = os.environ['met_key']
@@ -11,15 +12,25 @@ db = MySQLdb.connect('localhost','bloop_write',db_pass,'bloop' )
 strtime = strftime("%Y-%m-%d %H:%M:%S")
 url2 = 'http://81.187.136.232:8080/output.json'
 
-response = requests.get(url+key)
 epoch = int(time.time()) 
-data = response.json()
-response2 = requests.get(url2)
-data2 = response2.json()
 cursor = db.cursor()
 
+try:
+    response = requests.get(url+key)
+except requests.exceptions.RequestException as e:
+    print('Met office request failed: ',e)
+    sys.exit(1)
+try:
+    response2 = requests.get(url2) 
+except requests.exceptions.RequestException as e:
+    print('Pi request failed: ',e)
+    sys.exit(1)
+
+data = response.json()
+data2 = response2.json()
 edwin_temp = data2['temp']
 edwin_humid = data2['humid']
+
 met_temp = data['SiteRep']['DV']['Location']['Period'][0]['Rep'][0]['T']
 met_code = data['SiteRep']['DV']['Location']['Period'][0]['Rep'][0]['W']
 met_hydro = data['SiteRep']['DV']['Location']['Period'][0]['Rep'][0]['H']
