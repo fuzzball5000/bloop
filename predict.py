@@ -25,7 +25,7 @@ y = []
 for row in data :
     x.append(row[1])
     y.append(row[2])
-    print x
-    print y
+print x
+print y
 cursor.close ()
 db.close()
