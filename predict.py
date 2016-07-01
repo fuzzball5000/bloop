@@ -7,6 +7,8 @@ from sklearn import linear_model
 
 db_pass = os.environ['sql_pass']
 strtime = strftime("%Y-%m-%d %H:%M:%S")
+epoch = datetime.datetime.utcfromtimestamp(0)
+oneDay = epoch-86400
 
 try:
     db = MySQLdb.connect('localhost','bloop_write',db_pass,'bloop' )
@@ -14,3 +16,12 @@ try:
 except MySQLdb.Error as e:
     print("DB connect error: {}".format(e))
     sys.exit(1)
+
+cursor.execute ("select e_temp,e_hydro from edwin where epoc > oneDay order by epoc asc")
+
+data = cursor.fetchall ()
+
+for row in data :
+print row[0], row[1]
+cursor.close ()
+connection.close()
