@@ -22,6 +22,6 @@ cursor.execute ("select e_temp,e_hydro from edwin where epoc > 1466860141 order 
 data = cursor.fetchall ()
 
 for row in data :
-print row[0], row[1]
+    print row[0], row[1]
 cursor.close ()
 connection.close()
