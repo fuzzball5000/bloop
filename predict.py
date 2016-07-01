@@ -9,6 +9,7 @@ import datetime
 db_pass = os.environ['sql_pass']
 strtime = strftime("%Y-%m-%d %H:%M:%S")
 epoch = datetime.datetime.utcfromtimestamp(0)
+print epoch
 oneDay = epoch - 86400
 
 try:
