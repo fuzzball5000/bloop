@@ -9,7 +9,7 @@ import datetime
 db_pass = os.environ['sql_pass']
 strtime = strftime("%Y-%m-%d %H:%M:%S")
 epoch = datetime.datetime.utcfromtimestamp(0)
-oneDay = epoch-86400
+oneDay = epoch - 86400
 
 try:
     db = MySQLdb.connect('localhost','bloop_write',db_pass,'bloop' )
