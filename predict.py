@@ -15,7 +15,7 @@ except MySQLdb.Error as e:
     print("DB connect error: {}".format(e))
     sys.exit(1)
 
-cursor.execute ("select datetime,e_temp,e_hydro from edwin where epoc > 1466860141 order by epoc asc")
+cursor.execute ("select datetime,e_temp,e_hydro from edwin where epoc > 1466850141 order by epoc asc")
 
 data = cursor.fetchall ()
 
