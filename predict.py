@@ -26,4 +26,4 @@ data = cursor.fetchall ()
 for row in data :
     print row[0], row[1]
 cursor.close ()
-connection.close()
+db.close()
