@@ -19,7 +19,13 @@ cursor.execute ("select datetime,e_temp,e_hydro from edwin where epoc > 14668601
 
 data = cursor.fetchall ()
 
+x = []
+y = []
+
 for row in data :
-    print row[0], row[1], row[2]
+    x.append(row[1])
+    y.append(row[2])
+    print x
+    print y
 cursor.close ()
 db.close()
