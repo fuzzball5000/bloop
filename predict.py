@@ -4,6 +4,7 @@ import time
 from time import strftime
 import sys
 from sklearn import linear_model
+import datetime
 
 db_pass = os.environ['sql_pass']
 strtime = strftime("%Y-%m-%d %H:%M:%S")
