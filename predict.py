@@ -30,6 +30,8 @@ print y
 cursor.close ()
 db.close()
 
+##This isn't even close to working... sure beats
+##empty whitespace though...
 clf = linear_model.BayesianRidge()
 clf.fit(x, y)
 BayesianRidge(alpha_1=1e-06, alpha_2=1e-06, compute_score=False, copy_X=True,
