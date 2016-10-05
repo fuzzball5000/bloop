@@ -20,7 +20,7 @@ cursor.execute ("select MIN(datetime),e_temp,e_hydro from edwin GROUP BY DATE(da
 
 data = cursor.fetchall ()
 
-c = csv.writer(open("temp.csv","wb"))
+c = csv.writer(open("/home/centos/bloop/temp.csv","wb"))
 c.writerow(['date','e_temp','e_hydro'])
 for i in data:
     c.writerow(i)
