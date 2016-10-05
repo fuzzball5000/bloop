@@ -21,7 +21,7 @@ cursor.execute ("select datetime,e_temp,e_hydro from edwin order by epoc DESC LI
 data = cursor.fetchall ()
 
 c = csv.writer(open("temp.csv","wb"))
-c.writerow['date','e_temp','e_hydro']
+c.writerow(['date','e_temp','e_hydro'])
 for i in data:
     c.writerow(i)
 
