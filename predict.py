@@ -19,14 +19,10 @@ cursor.execute ("select datetime,e_temp,e_hydro from edwin order by epoc DESC LI
 
 data = cursor.fetchall ()
 
-x = []
-y = []
+c = csv.writer(open("temp.csv","wb"))
+for i in data:
+    c.writerow(i)
 
-for row in data :
-    x.append(row[1])
-    y.append(row[2])
-print x
-print y
 cursor.close ()
 db.close()
 
