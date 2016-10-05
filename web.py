@@ -1,12 +1,13 @@
 #!/usr/bin/python
 from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
-from os import curdir, sep
+from os import curdir, sep, chdir
 
 PORT_NUMBER = 8080
 
 class myHandler(BaseHTTPRequestHandler):
 	
 	def do_GET(self):
+                chdir('/home/pi/bloop/')
 		if self.path=="/":
 			self.path="/index.html"
 
