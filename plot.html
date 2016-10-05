@@ -41,7 +41,7 @@ var yAxis2 = d3.svg.axis().scale(y)
 // Define the line
 var valueline = d3.svg.line()
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.e_temp); });
+    .y(function(d) { return y(d.e_temp); })
     .y2(function(d) { return y(d.e_hydro); });
 
 // Adds the svg canvas
