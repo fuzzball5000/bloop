@@ -26,7 +26,7 @@ var margin = {top: 30, right: 20, bottom: 30, left: 50},
     width = 600 - margin.left - margin.right,
     height = 270 - margin.top - margin.bottom;
 // Parse the date / time
-var parseDate = d3.time.format("%d-%b-%y").parse;
+var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 // Set the ranges
 var x = d3.time.scale().range([0, width]);
 var y = d3.scale.linear().range([height, 0]);
@@ -38,7 +38,7 @@ var yAxis = d3.svg.axis().scale(y)
 // Define the line
 var valueline = d3.svg.line()
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.close); });
+    .y(function(d) { return y(d.e_temp); });
 
 // Adds the svg canvas
 var svg = d3.select("body")
@@ -49,14 +49,14 @@ var svg = d3.select("body")
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 // Get the data
-d3.csv("data.csv", function(error, data) {
+d3.csv("home/centos/bloop/temp.csv", function(error, data) {
     data.forEach(function(d) {
         d.date = parseDate(d.date);
-        d.close = +d.close;
+        d.e_temp = +d.e_temp;
     });
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain([0, d3.max(data, function(d) { return d.close; })]);
+    y.domain([0, d3.max(data, function(d) { return d.e_temp; })]);
     // Add the valueline path.
     svg.append("path")
         .attr("class", "line")
@@ -67,7 +67,7 @@ d3.csv("data.csv", function(error, data) {
       .enter().append("circle")
         .attr("r", 3.5)
         .attr("cx", function(d) { return x(d.date); })
-        .attr("cy", function(d) { return y(d.close); });
+        .attr("cy", function(d) { return y(d.e_temp); });
     // Add the X Axis
     svg.append("g")
         .attr("class", "x axis")
