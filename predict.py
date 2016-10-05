@@ -3,6 +3,7 @@ import MySQLdb
 import time
 import sys
 from sklearn import linear_model
+import csv
 
 db_pass = os.environ['sql_pass']
 epoch = int(time.time())
