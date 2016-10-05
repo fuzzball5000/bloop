@@ -62,13 +62,13 @@ var svg = d3.select("body")
 // Get the data
 d3.csv("temp.csv", function(error, data) {
     data.forEach(function(d) {
-        d.date = parseDate(d.datetime);
+        d.date = parseDate(d.date);
         d.close = +d.e_temp;
         d.open = +d.e_hydro;
     });
 
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.datetime; }));
+    x.domain(d3.extent(data, function(d) { return d.date; }));
     y0.domain([0, d3.max(data, function(d) {
 		return Math.max(d.e_temp); })]);
     y1.domain([0, d3.max(data, function(d) {
