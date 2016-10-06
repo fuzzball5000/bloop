@@ -93,11 +93,8 @@ d3.csv("temp.csv", function(error, data) {
         .style("fill", "red")
         .call(yAxisRight);
     svg.append("text")
-        .attr("class", "x axis")
         .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
         .attr("text-anchor", "middle")
-        .attr("x", width)
-        .attr("y", height - 6)
         .text("date/time")
 
 
