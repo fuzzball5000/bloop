@@ -76,26 +76,44 @@ d3.csv("temp.csv", function(error, data) {
 
     svg.append("path")        // Add the valueline path.
         .attr("d", valueline(data));
-
     svg.append("path")        // Add the valueline2 path.
         .style("stroke", "red")
         .attr("d", valueline2(data));
-
     svg.append("g")            // Add the X Axis
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
-
     svg.append("g")
         .attr("class", "y axis")
         .style("fill", "steelblue")
         .call(yAxisLeft);
-
     svg.append("g")
         .attr("class", "y axis")
         .attr("transform", "translate(" + width + " ,0)")
         .style("fill", "red")
         .call(yAxisRight);
+    svg.append("text")
+        .attr("class", "x axis")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height - 6)
+        .text("date/time")
+        .call(xAxis);
+    svg.append("text")
+        .attr("class", "y axis")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height - 6)
+        .text("temp (c)")
+        .call(yAxisLeft);
+    svg.append("text")
+        .attr("class", "y axis")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height - 6)
+        .text("RH (%)")
+        .call(yAxisRight);
+
 
 });
 
