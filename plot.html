@@ -94,6 +94,7 @@ d3.csv("temp.csv", function(error, data) {
         .call(yAxisRight);
     svg.append("text")
         .attr("class", "x axis")
+        .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
         .attr("text-anchor", "middle")
         .attr("x", width)
         .attr("y", height - 6)
