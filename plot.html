@@ -38,10 +38,10 @@ var xAxis = d3.svg.axis().scale(x)
     .orient("bottom").ticks(20);
 
 var yAxisLeft = d3.svg.axis().scale(y0)
-    .orient("left").ticks(5);
+    .orient("left").ticks(10);
 
 var yAxisRight = d3.svg.axis().scale(y1)
-    .orient("right").ticks(5);
+    .orient("right").ticks(10);
 
 var valueline = d3.svg.line()
     .x(function(d) { return x(d.date); })
