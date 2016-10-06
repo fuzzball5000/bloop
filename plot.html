@@ -101,14 +101,14 @@ d3.csv("temp.csv", function(error, data) {
         .call(xAxis);
     svg.append("text")
         .attr("class", "y axis")
-        .attr("text-anchor", "end")
+        .attr("text-anchor", "left")
         .attr("x", width)
         .attr("y", height - 6)
         .text("temp (c)")
         .call(yAxisLeft);
     svg.append("text")
         .attr("class", "y axis")
-        .attr("text-anchor", "end")
+        .attr("text-anchor", "right")
         .attr("x", width)
         .attr("y", height - 6)
         .text("RH (%)")
