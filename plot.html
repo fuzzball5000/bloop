@@ -89,11 +89,11 @@ d3.csv("temp.csv", function(error, data) {
         .style("stroke", "red")
         .attr("d", valueline2(data));
     svg.append("path")        // Add the valueline2 path.
-        .style("stroke", "steelblue").brighter(2)
+        .style("stroke", "#bdc6fc")
         .style("stroke-dasharray", ("3, 3"))
         .attr("d", valueline3(data));
     svg.append("path")        // Add the valueline2 path.
-        .style("stroke", "red").brighter(2)
+        .style("stroke", "#ff9999")
         .attr("d", valueline4(data))
         .style("stroke-dasharray", ("3, 3"));
     svg.append("g")            // Add the X Axis
