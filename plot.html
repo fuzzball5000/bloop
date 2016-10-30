@@ -53,10 +53,10 @@ var valueline2 = d3.svg.line()
     .y(function(d) { return y1(d.open); });
 var valueline3 = d3.svg.line()
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y0(d.m_temp); });
+    .y(function(d) { return y0(d.mtemp); });
 var valueline4 = d3.svg.line()
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y1(d.m_hydro); });
+    .y(function(d) { return y1(d.mhydro); });
 
 var svg = d3.select("body")
     .append("svg")
@@ -83,9 +83,9 @@ d3.csv("temp.csv", function(error, data) {
     y1.domain([0, d3.max(data, function(d) {
 		return Math.max(d.e_hydro); })]);
     y2.domain([0, d3.max(data, function(d) {
-		return Math.max(d.m_temp); })]);
+		return Math.max(d.mtemp); })]);
     y3.domain([0, d3.max(data, function(d) {
-		return Math.max(d.m_hydro); })]);
+		return Math.max(d.mhydro); })]);
 
     svg.append("path")        // Add the valueline path.
         .attr("d", valueline(data));
