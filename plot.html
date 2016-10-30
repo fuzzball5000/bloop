@@ -93,11 +93,13 @@ d3.csv("temp.csv", function(error, data) {
         .style("stroke", "red")
         .attr("d", valueline2(data));
     svg.append("path")        // Add the valueline2 path.
-        .style("stroke", "green")
+        .style("stroke", "steelblue")
+        .style("stroke-dasharray", ("3, 3"))
         .attr("d", valueline3(data));
     svg.append("path")        // Add the valueline2 path.
-        .style("stroke", "yellow")
+        .style("stroke", "red")
         .attr("d", valueline4(data));
+        .style("stroke-dasharray", ("3, 3"))
     svg.append("g")            // Add the X Axis
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
@@ -111,15 +113,6 @@ d3.csv("temp.csv", function(error, data) {
         .attr("transform", "translate(" + width + " ,0)")
         .style("fill", "red")
         .call(yAxisRight);
-        svg.append("g")
-            .attr("class", "y axis")
-            .style("fill", "green")
-            .call(yAxisLeft);
-        svg.append("g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(" + width + " ,0)")
-            .style("fill", "yellow")
-            .call(yAxisRight);
     svg.append("text")
         .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
         .attr("text-anchor", "middle")
