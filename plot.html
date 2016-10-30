@@ -65,6 +65,8 @@ d3.csv("temp.csv", function(error, data) {
         d.date = parseDate(d.date);
         d.close = +d.e_temp;
         d.open = +d.e_hydro;
+        d.mtemp = +d.m_temp;
+        d.mhydro = +d.m_hydro;
     });
 
     // Scale the range of the data
@@ -73,6 +75,10 @@ d3.csv("temp.csv", function(error, data) {
 		return Math.max(d.e_temp); })]);
     y1.domain([0, d3.max(data, function(d) {
 		return Math.max(d.e_hydro); })]);
+    y2.domain([0, d3.max(data, function(d) {
+		return Math.max(d.m_temp); })]);
+    y3.domain([0, d3.max(data, function(d) {
+		return Math.max(d.m_hydro); })]);
 
     svg.append("path")        // Add the valueline path.
         .attr("d", valueline(data));
@@ -92,6 +98,15 @@ d3.csv("temp.csv", function(error, data) {
         .attr("transform", "translate(" + width + " ,0)")
         .style("fill", "red")
         .call(yAxisRight);
+        svg.append("g")
+            .attr("class", "y axis")
+            .style("fill", "green")
+            .call(yAxisLeft);
+        svg.append("g")
+            .attr("class", "y axis")
+            .attr("transform", "translate(" + width + " ,0)")
+            .style("fill", "yellow")
+            .call(yAxisRight);
     svg.append("text")
         .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
         .attr("text-anchor", "middle")

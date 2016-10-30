@@ -16,12 +16,12 @@ except MySQLdb.Error as e:
     print("DB connect error: {}".format(e))
     sys.exit(1)
 
-cursor.execute ("select MIN(datetime),e_temp,e_hydro from edwin GROUP BY DATE(datetime),HOUR(datetime) order by epoc DESC LIMIT 100")
+cursor.execute ("select MIN(datetime),e_temp,e_hydro,m_temp,m_hydro from edwin GROUP BY DATE(datetime),HOUR(datetime) order by epoc DESC LIMIT 100")
 
 data = cursor.fetchall ()
 
 c = csv.writer(open("/home/centos/bloop/temp.csv","wb"))
-c.writerow(['date','e_temp','e_hydro'])
+c.writerow(['date','e_temp','e_hydro','m_temp','m_hydro'])
 for i in data:
     c.writerow(i)
 
