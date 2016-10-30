@@ -48,10 +48,15 @@ var yAxisRight = d3.svg.axis().scale(y1)
 var valueline = d3.svg.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y0(d.close); });
-
 var valueline2 = d3.svg.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y1(d.open); });
+var valueline3 = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y0(d.m_temp); });
+var valueline4 = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y1(d.m_hydro); });
 
 var svg = d3.select("body")
     .append("svg")
