@@ -81,10 +81,6 @@ d3.csv("temp.csv", function(error, data) {
     y0.domain([0, d3.max(data, function(d) {
 		return Math.max(d.close); })]);
     y1.domain([0, d3.max(data, function(d) {
-		return Math.max(d.open); })]);
-    y2.domain([0, d3.max(data, function(d) {
-		return Math.max(d.mtemp); })]);
-    y3.domain([0, d3.max(data, function(d) {
 		return Math.max(d.mhydro); })]);
 
     svg.append("path")        // Add the valueline path.
