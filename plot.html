@@ -92,6 +92,12 @@ d3.csv("temp.csv", function(error, data) {
     svg.append("path")        // Add the valueline2 path.
         .style("stroke", "red")
         .attr("d", valueline2(data));
+    svg.append("path")        // Add the valueline2 path.
+        .style("stroke", "green")
+        .attr("d", valueline3(data));
+    svg.append("path")        // Add the valueline2 path.
+        .style("stroke", "yellow")
+        .attr("d", valueline4(data));
     svg.append("g")            // Add the X Axis
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
