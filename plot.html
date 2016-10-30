@@ -33,6 +33,8 @@ var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 var x = d3.time.scale().range([0, width]);
 var y0 = d3.scale.linear().range([height, 0]);
 var y1 = d3.scale.linear().range([height, 0]);
+var y2 = d3.scale.linear().range([height, 0]);
+var y3 = d3.scale.linear().range([height, 0]);
 
 var xAxis = d3.svg.axis().scale(x)
     .orient("bottom").ticks(20);
